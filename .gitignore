@@ -1,0 +1,6 @@
+*.o
+*.ext4
+tags
+.dockerenv
+out
+build
