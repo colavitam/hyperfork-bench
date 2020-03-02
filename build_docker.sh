@@ -1,14 +1,12 @@
 set -e
 
-cd images/$1
-
 rm -rf mnt $1.tar
 
-docker image build -t $1 .
+docker image build -f images/$1/Dockerfile -t $1 .
 DPID=`docker create $1`
 docker export $DPID > $1.tar
 
-OUTFILE=../../out/$1.ext4
+OUTFILE=out/$1.ext4
 dd if=/dev/zero of=$OUTFILE bs=1M count=32
 mkfs.ext4 $OUTFILE
 mkdir -p mnt

@@ -1,4 +1,4 @@
-IMAGES=basic_fork
+IMAGES=basic_fork basic_memtest
 IMAGES_EXT4=$(patsubst %,out/%.ext4,$(IMAGES))
 
 SIGNALS=fork reset done
@@ -19,7 +19,7 @@ $(SIGNALS_EXEC): out/%: build/%.o $(SIGNALS_REQ_OBJ)
 	mkdir -p out build
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(IMAGES_EXT4): out/%.ext4:
+$(IMAGES_EXT4): out/%.ext4: $(SIGNALS_EXEC)
 	mkdir -p out build
 	./build_docker.sh $*
 

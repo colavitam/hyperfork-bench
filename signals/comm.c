@@ -36,20 +36,21 @@ int comm_fork(void) {
   send_comm(FORK);
 
   int rfd = open("/dev/random", O_RDONLY);
-  int urfd = open("/dev/urandom", O_RDONLY);
+  int urfd = open("/dev/urandom", O_WRONLY);
 
   char buf[64];
   int tot = 0;
+  int amt = 0;
   while (tot < 64) {
-    r = read(rfd, buf, 64);
-    if (r < 0)
+    amt = read(rfd, buf, 64);
+    if (amt < 0)
       continue;
 
     r = write(urfd, buf, r);
     if (r < 0)
       continue;
 
-    tot += r;
+    tot += amt;
   }
 
   return 0;
