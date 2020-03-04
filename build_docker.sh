@@ -7,7 +7,7 @@ DPID=`docker create $1`
 docker export $DPID > $1.tar
 
 OUTFILE=out/$1.ext4
-dd if=/dev/zero of=$OUTFILE bs=1M count=32
+dd if=/dev/zero of=$OUTFILE bs=1M count=1024
 mkfs.ext4 $OUTFILE
 mkdir -p mnt
 

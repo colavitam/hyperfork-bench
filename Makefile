@@ -1,4 +1,4 @@
-IMAGES=basic_fork basic_memtest
+IMAGES=basic_fork basic_memtest python
 IMAGES_EXT4=$(patsubst %,out/%.ext4,$(IMAGES))
 
 SIGNALS=fork reset done
