@@ -1,4 +1,4 @@
-IMAGES=basic_fork basic_memtest python
+IMAGES=basic_fork basic_memtest java gcc
 IMAGES_EXT4=$(patsubst %,out/%.ext4,$(IMAGES))
 
 SIGNALS=fork reset done
