@@ -8,4 +8,6 @@
 /reset
 /memtest
 /reset
+/memtest
+/reset
 /done
